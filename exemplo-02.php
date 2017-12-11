@@ -8,6 +8,11 @@ foreach ($images as $img){
 		$filename = "images".DIRECTORY_SEPARATOR.$img;
 		$info = pathinfo($filename);
 		//var_dump($info);
+		$info["size"] = filesize($filename);
+		$info["modified"] = date("d/m/Y H:i:s", filemtime($filename)); 
+		$info["url"] = "http:\localhost\dir".str_replace("\\","/",$filename);
+		
+
 		array_push($data, $info);
 	}
 }
